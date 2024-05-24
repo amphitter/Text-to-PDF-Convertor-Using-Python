@@ -8,9 +8,13 @@ def text_to_pdf(input_file, output_file):
     # Set up fonts
     c.setFont("Helvetica", 12)
 
-    # Read text from the input file
-    with open(input_file, "r") as f:
-        lines = f.readlines()
+    try:
+        # Read text from the input file
+        with open(input_file, "r") as f:
+            lines = f.readlines()
+    except FileNotFoundError:
+        print("Error: Input file not found.")
+        return
 
     # Write text to PDF
     y = 750  # Starting y position
